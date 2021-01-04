@@ -20,7 +20,7 @@ jobs:
       vmImage: 'windows-latest'
 
     variables:
-      solution: '*.sln'
+      solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
 
