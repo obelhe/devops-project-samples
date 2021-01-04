@@ -5,11 +5,40 @@
 trigger:
 - master
 
+#jobs:
+#  - job: thisIsMyTestingJobOk
+#    pool:
+#      vmImage: "ubuntu-16.04"
+#    steps:
+#    - bash: echo "Hello from the great beyond yo!!!!"
+#    - bash: pwd
+#    - bash: ls
+
 jobs:
-  - job: thisIsMyTestingJobOk
+  - job: building the test application
     pool:
-      vmImage: "ubuntu-16.04"
+      vmImage: 'windows-latest'
+
+    variables:
+      solution: '**/*.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+
     steps:
-    - bash: echo "Hello from the great beyond yo!!!!"
-    - bash: pwd
-    - bash: ls
+    - task: NuGetToolInstaller@1
+
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '$(solution)'
+
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
+
+    - task: VSTest@2
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
