@@ -15,7 +15,7 @@ trigger:
 #    - bash: ls
 
 jobs:
-  - job: building the test application
+  - job: building_the_test_application
     pool:
       vmImage: 'windows-latest'
 
