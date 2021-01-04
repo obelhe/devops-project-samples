@@ -11,11 +11,15 @@ jobs:
     vmImage: "ubuntu-16.04"
   steps:
   - bash: echo "Hello from the great beyond yo!!!!"
+  - bash: pwd
+  - bash: ls
 - job: thisIsMyOtherTestingJob
   pool:
     vmImage: "windows-latest"
   steps:
     - bash: echo "Hello second time"
+    - bash: pwd
+    - bash: ls
 
 
 
