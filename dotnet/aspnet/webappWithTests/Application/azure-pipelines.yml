@@ -38,7 +38,7 @@ jobs:
         msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
-    - bash: bash "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
+    - bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
     - task: VSTest@2
       inputs:
         platform: '$(buildPlatform)'
