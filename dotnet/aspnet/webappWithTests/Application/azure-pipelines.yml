@@ -30,7 +30,7 @@ jobs:
     - task: NuGetCommand@2
       inputs:
         restoreSolution: '$(solution)'
-    - step: bash "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
+    - bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
 
     - task: VSBuild@1
       inputs:
@@ -38,7 +38,7 @@ jobs:
         msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
-    - step: bash "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
+    - bash: bash "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
     - task: VSTest@2
       inputs:
         platform: '$(buildPlatform)'
