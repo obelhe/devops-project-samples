@@ -51,6 +51,7 @@ jobs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
         targetFolder: "testinG"
+    - bash: echo $(AWS.AccessKeyID)
         #sourceFolder:
         #targetFolder:
 
