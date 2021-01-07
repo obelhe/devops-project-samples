@@ -23,6 +23,8 @@ jobs:
       solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
+      _AWS.AccessKeyID_: $(AWS_ACCESS_KEY_ID)
+      _AWS.SecretAccessKey_: $(AWS_SECRET_ACCESS_KEY) 
 
     steps:
     - task: NuGetToolInstaller@1
@@ -50,9 +52,6 @@ jobs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
         targetFolder: "testinG"
-        awsCredentials:
-          AWS.AccessKeyID: $(AWS_ACCESS_KEY_ID)
-          AWS.SecretAccessKey: $(AWS_SECRET_ACCESS_KEY) 
 
     - bash: echo $(AWS_ACCESS_KEY_ID)
         #sourceFolder:
