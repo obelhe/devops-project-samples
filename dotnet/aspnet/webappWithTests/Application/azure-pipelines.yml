@@ -44,10 +44,13 @@ jobs:
         #platform: '$(buildPlatform)'
         #configuration: '$(buildConfiguration)'
     - bash: echo $(Build.SourceVersion)
+    - bash: echo $(Build.ArtifactStagingDirectory)
     - task: S3Upload@1
       inputs:
-        bucketName: 's3://bookenda-azure-builds-test'
+        displayName: "Uploading artifacts to S3"
+        bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
+        targetFolder: "testinG"
         #sourceFolder:
         #targetFolder:
 
