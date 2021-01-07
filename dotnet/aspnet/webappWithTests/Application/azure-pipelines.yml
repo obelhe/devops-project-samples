@@ -43,6 +43,7 @@ jobs:
       #inputs:
         #platform: '$(buildPlatform)'
         #configuration: '$(buildConfiguration)'
+    - bash: echo $(Build.SourceVersion)
     - task: S3Upload@1
       inputs:
         bucketName: 'bookenda-azure-builds'
