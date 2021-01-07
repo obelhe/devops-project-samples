@@ -47,6 +47,7 @@ jobs:
     - task: S3Upload@1
       inputs:
         bucketName: 'bookenda-azure-builds-test'
+        
         #sourceFolder:
         #targetFolder:
 
