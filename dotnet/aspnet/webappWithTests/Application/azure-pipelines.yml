@@ -43,4 +43,4 @@ jobs:
       inputs:
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
-    - bash: echo '$(AWS_ACCESS_KEY_ID)'
+    - bash: "echo $(AWS_ACCESS_KEY_ID)"
