@@ -45,7 +45,7 @@ jobs:
         #configuration: '$(buildConfiguration)'
     - task: S3Upload
       inputs:
-      bukcetName: 'something'
-      #sourceFolder:
-      #targetFolder:
+        bukcetName: 'something'
+        #sourceFolder:
+        #targetFolder:
 
