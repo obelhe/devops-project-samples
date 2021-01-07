@@ -45,15 +45,16 @@ jobs:
       #inputs:
         #platform: '$(buildPlatform)'
         #configuration: '$(buildConfiguration)'
+
     - bash: echo $(Build.SourceVersion)
     - bash: echo $(Build.ArtifactStagingDirectory)
-    - task: S3Upload@1
-      inputs:
-        bucketName: 'bookenda-azure-builds-test'
-        regionName: us-east-1
-        targetFolder: "testinG"
+    #- task: S3Upload@1
+      #inputs:
+        #bucketName: 'bookenda-azure-builds-test'
+        #regionName: us-east-1
+        #targetFolder: "testinG"
 
-    - bash: echo $(AWS_ACCESS_KEY_ID)
+    - bash: echo $(this_is_secret)
         #sourceFolder:
         #targetFolder:
 
