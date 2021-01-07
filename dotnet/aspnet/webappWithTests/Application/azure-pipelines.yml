@@ -23,8 +23,8 @@ jobs:
       solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      _AWS.AccessKeyID_: $(AWS_ACCESS_KEY_ID)
-      _AWS.SecretAccessKey_: $(AWS_SECRET_ACCESS_KEY) 
+      AWS.AccessKeyID: $(AWS_ACCESS_KEY_ID)
+      AWS.SecretAccessKey: $(AWS_SECRET_ACCESS_KEY) 
 
     steps:
     - task: NuGetToolInstaller@1
@@ -48,14 +48,15 @@ jobs:
 
     - bash: echo $(Build.SourceVersion)
     - bash: echo $(Build.ArtifactStagingDirectory)
-    #- task: S3Upload@1
-      #inputs:
-        #bucketName: 'bookenda-azure-builds-test'
-        #regionName: us-east-1
-        #targetFolder: "testinG"
+    - task: S3Upload@1
+      inputs:
+        bucketName: 'bookenda-azure-builds-test'
+        regionName: us-east-1
+        targetFolder: "testinG"
 
     - bash: echo $(this_is_secret)
     - bash: echo $(this_is_real_secret)
+    - bash: echo $(AWS_ACCESS_KEY_ID)
         #sourceFolder:
         #targetFolder:
 
