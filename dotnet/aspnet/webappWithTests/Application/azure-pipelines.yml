@@ -51,7 +51,6 @@ jobs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
         targetFolder: "testinG"
-        createBucket: true
         #sourceFolder:
         #targetFolder:
 
