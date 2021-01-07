@@ -55,6 +55,7 @@ jobs:
         #targetFolder: "testinG"
 
     - bash: echo $(this_is_secret)
+    - bash: eceho $(this_is_real_secret)
         #sourceFolder:
         #targetFolder:
 
