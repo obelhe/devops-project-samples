@@ -57,8 +57,9 @@ jobs:
 
     #- bash: echo $(Build.SourceVersion)
     - bash: printenv
-    - bash: cd '$(TEMP)' && ls
-    - bash: view '$(zipFile)'
+    - bash: cd '$(BUILD_ARTIFACTSTAGINGDIRECTORY)' && ls
+    - bash: cd '$(BUILD_BINARIESDIRECTORY) && ls'
+    #- bash: view '$(zipFile)'
     #- bash: "ls dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
     #- task: S3Upload@1
       #inputs:
