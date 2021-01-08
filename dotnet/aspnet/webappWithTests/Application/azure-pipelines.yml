@@ -62,4 +62,4 @@ jobs:
         regionName: us-east-1
         sourceFolder: "$(Build.artifactStagingDirectory)"
         targetFolder: "binaries"
-        #globExpressions: "$(Build.SourceVersion).zip"
+        globExpressions: "$(Build.SourceVersion).zip"
