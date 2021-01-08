@@ -64,7 +64,7 @@ jobs:
       inputs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
-        sourceFolder: "$(Build.artifactStagingDirectory)/SampleWebApplication.zip"
+        sourceFolder: "$(Build.artifactStagingDirectory)"
         targetFolder: "binaries"
 
 
