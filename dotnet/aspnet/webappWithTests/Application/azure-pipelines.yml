@@ -23,7 +23,7 @@ jobs:
       solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      zipFile: "$(Build.ArtifactStagingDirectory)/$(Build.SourceVersion).zip"
+      zipFile: "$(Build.ArtifactStagingDirectory)\$(Build.SourceVersion).zip"
       AWS.AccessKeyID: $(AWS_ACCESS_KEY_ID)
       AWS.SecretAccessKey: $(AWS_SECRET_ACCESS_KEY) 
 
@@ -38,7 +38,7 @@ jobs:
     - task: VSBuild@1
       inputs:
         solution: '$(solution)'
-        #msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
     #- bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
