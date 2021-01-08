@@ -65,5 +65,5 @@ jobs:
         #regionName: us-east-1
         #sourceFolder: $(zipFile)
         #targetFolder: "testinG"
-    - bash: "ls $(Build.ArtifactStagingDirectory)"
+    - bash: "cd $(Build.ArtifactStagingDirectory) && ls"
 
