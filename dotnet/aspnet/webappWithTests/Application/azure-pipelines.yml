@@ -45,18 +45,24 @@ jobs:
       #inputs:
         #platform: '$(buildPlatform)'
         #configuration: '$(buildConfiguration)'
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: "dotnet/aspnet/webappWithTests/Application/bin/Release"
+        includeRootFolder: false
+        archiveType: "zip"
+        archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.SourceVersion).zip"
+
+
 
     - bash: echo $(Build.SourceVersion)
+    - bash: echo $(Build.BinariesDirectory)
     - bash: echo $(Build.ArtifactStagingDirectory)
-    - task: S3Upload@1
+    - task: PowerShell@2
       inputs:
-        bucketName: 'bookenda-azure-builds-test'
-        regionName: us-east-1
-        targetFolder: "testinG"
-
-    - bash: echo $(this_is_secret)
-    - bash: echo $(this_is_real_secret)
-    - bash: echo $(AWS_ACCESS_KEY_ID)
-        #sourceFolder:
-        #targetFolder:
+        script: "ls env:"
+    #- task: S3Upload@1
+      #inputs:
+        #bucketName: 'bookenda-azure-builds-test'
+        #regionName: us-east-1
+        #targetFolder: "testinG"
 
