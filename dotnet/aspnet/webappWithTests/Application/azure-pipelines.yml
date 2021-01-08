@@ -37,7 +37,7 @@ jobs:
     - task: VSBuild@1
       inputs:
         solution: '$(solution)'
-        #msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
 
@@ -62,3 +62,4 @@ jobs:
         regionName: us-east-1
         sourceFolder: "$(Build.artifactStagingDirectory)"
         targetFolder: "binaries"
+        #globExpressions: "$(Build.SourceVersion).zip"
