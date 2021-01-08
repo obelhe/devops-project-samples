@@ -23,7 +23,7 @@ jobs:
       solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      zipFile: "$(Build.ArtifactStagingDirectory)/$(Build.SourceVersion).zip"
+      zipFile: "$(TEMP)/$(Build.SourceVersion).zip"
       AWS.AccessKeyID: $(AWS_ACCESS_KEY_ID)
       AWS.SecretAccessKey: $(AWS_SECRET_ACCESS_KEY) 
 
@@ -56,7 +56,7 @@ jobs:
 
 
     #- bash: echo $(Build.SourceVersion)
-    #- bash: "ls $(Build.BinariesDirectory)"
+    - bash: "ls $(Build.BinariesDirectory)"
     
     - bash: printenv
     - bash: "ls dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
@@ -66,5 +66,5 @@ jobs:
         #regionName: us-east-1
         #sourceFolder: $(zipFile)
         #targetFolder: "testinG"
-    - bash: "cd $(Build.ArtifactStagingDirectory) && ls"
+
 
