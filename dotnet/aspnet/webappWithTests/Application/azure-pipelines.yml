@@ -38,7 +38,7 @@ jobs:
     - task: VSBuild@1
       inputs:
         solution: '$(solution)'
-        #msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
     #- bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
@@ -57,7 +57,7 @@ jobs:
 
     #- bash: echo $(Build.SourceVersion)
     - bash: printenv
-    - bash: cd '$(BUILD.ARTIFACTSTAGINGDIRECTORY)' && ls
+    - bash: cd '$(Build.artifactStagingDirectory)' && ls
     - bash: cd '$(BUILD.BINARIESDIRECTORY) && ls'
     #- bash: view '$(zipFile)'
     #- bash: "ls dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
