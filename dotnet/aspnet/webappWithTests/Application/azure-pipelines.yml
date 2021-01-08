@@ -33,7 +33,6 @@ jobs:
     - task: NuGetCommand@2
       inputs:
         restoreSolution: '$(solution)'
-    - bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
 
     - task: VSBuild@1
       inputs:
@@ -41,7 +40,7 @@ jobs:
         #msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
-    #- bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
+
     #- task: VSTest@2
       #inputs:
         #platform: '$(buildPlatform)'
@@ -53,13 +52,10 @@ jobs:
         archiveType: "zip"
         archiveFile: $(zipFile)
 
-
-
-    #- bash: echo $(Build.SourceVersion)
     - bash: printenv
+
     - bash: cd '$(Build.artifactStagingDirectory)' && ls
-    #- bash: view '$(zipFile)'
-    #- bash: "ls dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
+
     - task: S3Upload@1
       inputs:
         bucketName: 'bookenda-azure-builds-test'
