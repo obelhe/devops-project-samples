@@ -47,7 +47,7 @@ jobs:
         #configuration: '$(buildConfiguration)'
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: "dotnet/aspnet/webappWithTests/Application/bin/Release"
+        rootFolderOrFile: "dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
         includeRootFolder: false
         archiveType: "zip"
         archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.SourceVersion).zip"
