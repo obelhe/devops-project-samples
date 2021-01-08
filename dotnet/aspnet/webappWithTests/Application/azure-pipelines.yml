@@ -23,7 +23,7 @@ jobs:
       solution: 'dotnet/aspnet/webappWithTests/Application/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      zipFile: "$(TEMP)/$(Build.SourceVersion).zip"
+      zipFile: "$(Build.artifactStagingDirectory)/$(Build.SourceVersion).zip"
       AWS.AccessKeyID: $(AWS_ACCESS_KEY_ID)
       AWS.SecretAccessKey: $(AWS_SECRET_ACCESS_KEY) 
 
@@ -64,7 +64,7 @@ jobs:
       inputs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
-        sourceFolder: "$(Build.artifactStagingDirectory)"
+        sourceFolder: "$(Build.artifactStagingDirectory)/*.zip"
         targetFolder: "binaries"
 
 
