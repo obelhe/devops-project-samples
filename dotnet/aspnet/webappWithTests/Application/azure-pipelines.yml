@@ -58,14 +58,13 @@ jobs:
     #- bash: echo $(Build.SourceVersion)
     - bash: printenv
     - bash: cd '$(Build.artifactStagingDirectory)' && ls
-    - bash: cd '$(BUILD.BINARIESDIRECTORY) && ls'
     #- bash: view '$(zipFile)'
     #- bash: "ls dotnet/aspnet/webappWithTests/Application/SampleWebApplication/bin"
-    #- task: S3Upload@1
-      #inputs:
-        #bucketName: 'bookenda-azure-builds-test'
-        #regionName: us-east-1
-        #sourceFolder: $(zipFile)
-        #targetFolder: "binaries"
+    - task: S3Upload@1
+      inputs:
+        bucketName: 'bookenda-azure-builds-test'
+        regionName: us-east-1
+        sourceFolder: "$(Build.artifactStagingDirectory)/SampleWebApplication.zip"
+        targetFolder: "binaries"
 
 
