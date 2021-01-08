@@ -57,12 +57,13 @@ jobs:
 
     #- bash: echo $(Build.SourceVersion)
     #- bash: "ls $(Build.BinariesDirectory)"
-    #- bash: "ls $(Build.ArtifactStagingDirectory)"
-    - powershell: 'Write-Host ls env:'
-    - task: S3Upload@1
-      inputs:
-        bucketName: 'bookenda-azure-builds-test'
-        regionName: us-east-1
-        sourceFolder: $(zipFile)
-        targetFolder: "testinG"
+    
+    - bash: printenv
+    #- task: S3Upload@1
+      #inputs:
+        #bucketName: 'bookenda-azure-builds-test'
+        #regionName: us-east-1
+        #sourceFolder: $(zipFile)
+        #targetFolder: "testinG"
+    - bash: "ls $(Build.ArtifactStagingDirectory)"
 
