@@ -38,7 +38,7 @@ jobs:
     - task: VSBuild@1
       inputs:
         solution: '$(solution)'
-        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        #msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
     #- bash: "cd dotnet && cd aspnet && cd webappWithTests && cd Application && cd SampleWebApplication && ls"
@@ -64,7 +64,7 @@ jobs:
       inputs:
         bucketName: 'bookenda-azure-builds-test'
         regionName: us-east-1
-        sourceFolder: "$(Build.artifactStagingDirectory)/*.zip"
+        #sourceFolder: "$(Build.artifactStagingDirectory)/*.zip"
         targetFolder: "binaries"
 
 
